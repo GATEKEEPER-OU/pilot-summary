@@ -1,12 +1,13 @@
 import smtplib
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from email.utils import formatdate
 from os.path import basename
 
 COMMASPACE = ', '
 
-def send_email(smtp_server, sender, mailing_list, subject, attachment):
+def send_email(smtp_server, sender, mailing_list, subject, content, attachment):
   assert isinstance(mailing_list, list)
   #
   msg = MIMEMultipart()
@@ -14,7 +15,7 @@ def send_email(smtp_server, sender, mailing_list, subject, attachment):
   msg['To'] = COMMASPACE.join(mailing_list)
   msg['Date'] = formatdate(localtime=True)
   msg['Subject'] = subject
-  # msg.attach(MIMEText(text))
+  msg.attach(MIMEText(content))
   with open(attachment, "rb") as attachment_file:
     part = MIMEApplication(
       attachment_file.read(),

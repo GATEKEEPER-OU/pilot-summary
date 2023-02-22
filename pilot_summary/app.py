@@ -87,9 +87,13 @@ def main():
 
     # Send mail notification to the mailing list recipients
     subject = "[GATEKEEPER-%s] Report %s" % (args.pilot, date)
+    content = """
+      Please load me on
+        Documents> 05 Work Packages> WP04> FHIR Data Summary extractor program
+    """
     with open(args.mailing_list) as f:
       mailing_list = [line.rstrip() for line in f]
-    send_email(args.smtp_server, args.sender, mailing_list, subject, output_file)
+    send_email(args.smtp_server, args.sender, mailing_list, subject, content, output_file)
   #
   except ValueError as e:
     logger.error("%s" % e)
