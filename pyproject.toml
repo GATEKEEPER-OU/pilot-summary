@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "pilot-summary"
+version = "0.1.0"
+description = "FHIR GATEKEEPER DATA Summary"
+authors = ["Riccardo Pala <riccardo.pala@open.ac.uk>"]
+readme = "README.md"
+homepage = "https://github.com/GATEKEEPER-OU/pilot-summary"
+repository = "https://github.com/GATEKEEPER-OU/pilot-summary"
+# documentation = ""
+packages = [{include = "pilot_summary"}]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/GATEKEEPER-OU/pilot-summary/issues"
+
+[tool.poetry.scripts]
+summary = "pilot_summary.app:main"
+
+[tool.poetry.dependencies]
+python = "^3.9.0"
+requests = "^2.28.2"
+tqdm = "^4.64.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
